@@ -1,42 +1,49 @@
 package com.spring.backend.models;
 
 import java.util.Date;
-import java.util.List;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import jakarta.persistence.OneToMany;
-import jakarta.persistence.Table;
+import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.mapping.Document;
+import org.springframework.data.mongodb.core.mapping.Field;
+import org.springframework.data.mongodb.core.mapping.FieldType;
 
 
-@Entity
-@Table(name = "contactos")
+@Document(collection = "contacto")
 public class Contacto {
 	
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
+	@Field(name = "nombres")
 	private String nombres;
+	
+	@Field(name = "apellidos")
 	private String apellidos;
+	
+	@Field(name = "email") 
 	private String email;
+	
+	@Field(name = "telefono")
 	private String telefono;
+	
+	@Field(name = "fechaNacimiento",targetType = FieldType.DATE_TIME)
 	private Date fechaNacimiento;
+	
+	@Field(name = "direccion")
 	private String direccion;
+	
+	@Field(name = "tipoContacto")
 	private String tipoContacto;
+	
+	@Field(name = "origen")
 	private String origen;
 	
-	@OneToMany
-	private Usuario usuario;
-	
-	@OneToMany(mappedBy = "contacto")
-	private List<Tarea> Tareas;
 	
 	public Contacto() {
 		// TODO Auto-generated constructor stub
-	}	
+	}
+
 	
+
 	public Contacto(Integer id, String nombres, String apellidos, String email, String telefono, Date fechaNacimiento,
 			String direccion, String tipoContacto, String origen) {
 		super();
@@ -50,87 +57,97 @@ public class Contacto {
 		this.tipoContacto = tipoContacto;
 		this.origen = origen;
 	}
-	
-	
-	
+
+
+
 	public Integer getId() {
 		return id;
 	}
+
+
 	public void setId(Integer id) {
 		this.id = id;
 	}
+
+
 	public String getNombres() {
 		return nombres;
 	}
+
+
 	public void setNombres(String nombres) {
 		this.nombres = nombres;
 	}
+
+
 	public String getApellidos() {
 		return apellidos;
 	}
+
+
 	public void setApellidos(String apellidos) {
 		this.apellidos = apellidos;
 	}
+
+
 	public String getEmail() {
 		return email;
 	}
+
+
 	public void setEmail(String email) {
 		this.email = email;
 	}
+
+
 	public String getTelefono() {
 		return telefono;
 	}
+
+
 	public void setTelefono(String telefono) {
 		this.telefono = telefono;
 	}
+
+
 	public Date getFechaNacimiento() {
 		return fechaNacimiento;
 	}
+
+
 	public void setFechaNacimiento(Date fechaNacimiento) {
 		this.fechaNacimiento = fechaNacimiento;
 	}
+
+
 	public String getDireccion() {
 		return direccion;
 	}
+
+
 	public void setDireccion(String direccion) {
 		this.direccion = direccion;
 	}
+
+
 	public String getTipoContacto() {
 		return tipoContacto;
 	}
+
+
 	public void setTipoContacto(String tipoContacto) {
 		this.tipoContacto = tipoContacto;
 	}
+
+
 	public String getOrigen() {
 		return origen;
 	}
+
+
 	public void setOrigen(String origen) {
 		this.origen = origen;
-	}
-	
-
-	public List<Tarea> getTareas() {
-		return Tareas;
-	}
-
-	public void setTareas(List<Tarea> tareas) {
-		Tareas = tareas;
-	}
-
-	public Usuario getUsuario() {
-		return usuario;
-	}
-
-	public void setUsuario(Usuario usuario) {
-		this.usuario = usuario;
-	}
-
-	@Override
-	public String toString() {
-		return "Contacto [id=" + id + ", nombres=" + nombres + ", apellidos=" + apellidos + ", email=" + email
-				+ ", telefono=" + telefono + ", fechaNacimiento=" + fechaNacimiento + ", direccion=" + direccion
-				+ ", tipoContacto=" + tipoContacto + ", origen=" + origen + "]";
-	}
+	}	
 	
 	
 	

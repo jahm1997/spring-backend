@@ -1,34 +1,42 @@
 package com.spring.backend.models;
 
 import java.util.Date;
-import java.util.List;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import jakarta.persistence.OneToMany;
-import jakarta.persistence.Table;
+import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.mapping.Document;
+import org.springframework.data.mongodb.core.mapping.Field;
+import org.springframework.data.mongodb.core.mapping.FieldType;
 
-@Entity
-@Table(name = "usuarios")
-
+@Document(collection = "usuario")
 public class Usuario {
+	
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
+	
+	@Field(name = "nombres")
 	private String nombres;
+	
+	@Field(name = "apellidos")
 	private String apellidos;
+	
+	@Field(name = "email")
 	private String email;
+	
+	@Field(name = "telefono")
 	private String telefono;
+	
+	@Field(name = "fechaNacimiento", targetType = FieldType.DATE_TIME)
 	private Date fechaNacimiento;
+	
+	@Field(name = "direccion")
 	private String direccion;
+	
+	@Field(name = "tipoContacto")
 	private String tipoContacto;
+	
+	@Field(name = "origen")
 	private String origen;
 	
-	@OneToMany(mappedBy = "usuario")
-	private List<Contacto> contactos;
-	 
 	
 	public Usuario() {
 		// TODO Auto-generated constructor stub
@@ -119,23 +127,5 @@ public class Usuario {
 	public void setOrigen(String origen) {
 		this.origen = origen;
 	}
-
-	
-	public List<Contacto> getContactos() {
-		return contactos;
-	}
-
-	public void setContactos(List<Contacto> contactos) {
-		this.contactos = contactos;
-	}
-
-	@Override
-	public String toString() {
-		return "Usuario [id=" + id + ", nombres=" + nombres + ", apellidos=" + apellidos + ", email=" + email
-				+ ", telefono=" + telefono + ", fechaNacimiento=" + fechaNacimiento + ", direccion=" + direccion
-				+ ", tipoContacto=" + tipoContacto + ", origen=" + origen + "]";
-	}
-	
-	
 	
 }

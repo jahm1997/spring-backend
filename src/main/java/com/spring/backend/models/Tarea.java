@@ -1,33 +1,19 @@
 package com.spring.backend.models;
 
-import java.util.List;
+import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.mapping.Document;
+import org.springframework.data.mongodb.core.mapping.Field;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import jakarta.persistence.ManyToOne;
-import jakarta.persistence.OneToMany;
-import jakarta.persistence.OneToOne;
-import jakarta.persistence.Table;
-
-@Entity
-@Table(name = "tareas")
+@Document(collection = "tarea")
 public class Tarea {
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
+	
+	@Field(name = "tipo")
 	private String tipo;
+	
+	@Field(name = "titulo")
 	private String titulo;
-	
-	@ManyToOne
-	private Usuario usuario;
-	
-	@OneToOne
-	private Tarea tarea;
-	
-	@OneToMany(mappedBy = "detalleTareas")
-	private List<DetalleTarea> detalleTareas;
 	
 	public Tarea() {
 		// TODO Auto-generated constructor stub
@@ -64,38 +50,5 @@ public class Tarea {
 		this.titulo = titulo;
 	}
 
-	
-	
-	public Usuario getUsuario() {
-		return usuario;
-	}
-
-	public void setUsuario(Usuario usuario) {
-		this.usuario = usuario;
-	}
-
-	
-	public Tarea getTarea() {
-		return tarea;
-	}
-
-	public void setTarea(Tarea tarea) {
-		this.tarea = tarea;
-	}
-
-	public List<DetalleTarea> getDetalleTareas() {
-		return detalleTareas;
-	}
-
-	public void setDetalleTareas(List<DetalleTarea> detalleTareas) {
-		this.detalleTareas = detalleTareas;
-	}
-
-	@Override
-	public String toString() {
-		return "Tareas [id=" + id + ", tipo=" + tipo + ", titulo=" + titulo + "]";
-	}
-	
-	
 	
 }

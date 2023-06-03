@@ -1,11 +1,11 @@
 package com.spring.backend.repository;
 
-import org.springframework.data.jpa.repository.JpaRepository;
-import org.springframework.stereotype.Repository;
+
+
+import org.springframework.data.mongodb.repository.MongoRepository;
 
 import com.spring.backend.models.Tarea;
 
-@Repository
-public interface TareaRepository extends JpaRepository<Tarea, Integer>{
+public interface TareaRepository extends MongoRepository<Tarea, Integer>{
 
 }
