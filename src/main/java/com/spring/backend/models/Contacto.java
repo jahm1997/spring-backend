@@ -1,6 +1,7 @@
 package com.spring.backend.models;
 
 import java.util.Date;
+import java.util.List;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -28,6 +29,9 @@ public class Contacto {
 	
 	@OneToMany
 	private Usuario usuario;
+	
+	@OneToMany(mappedBy = "contacto")
+	private List<Tarea> Tareas;
 	
 	public Contacto() {
 		// TODO Auto-generated constructor stub
@@ -102,6 +106,15 @@ public class Contacto {
 	}
 	public void setOrigen(String origen) {
 		this.origen = origen;
+	}
+	
+
+	public List<Tarea> getTareas() {
+		return Tareas;
+	}
+
+	public void setTareas(List<Tarea> tareas) {
+		Tareas = tareas;
 	}
 
 	public Usuario getUsuario() {

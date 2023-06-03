@@ -29,8 +29,6 @@ public class Usuario {
 	@OneToMany(mappedBy = "usuario")
 	private List<Contacto> contactos;
 	 
-	@OneToMany(mappedBy = "usuario")
-	private List<Tarea> tareas;
 	
 	public Usuario() {
 		// TODO Auto-generated constructor stub
