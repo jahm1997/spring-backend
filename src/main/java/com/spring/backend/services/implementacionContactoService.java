@@ -5,10 +5,10 @@ import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import com.spring.backend.DTO.ContactoDTO;
 import com.spring.backend.models.Contacto;
 import com.spring.backend.repository.ContactoRepository;
-
-
 
 @Service
 public class implementacionContactoService {
@@ -24,7 +24,7 @@ public class implementacionContactoService {
 		return contactoRepository.findById(id);
 	}
 
-	public Contacto update(Contacto contacto) {
+	public Contacto agregarContacto(ContactoDTO contacto) {
 		//private Integer id;
 		//private String nombres;
 		//private String apellidos;
