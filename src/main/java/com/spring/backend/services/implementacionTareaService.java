@@ -4,28 +4,30 @@ import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import com.spring.backend.DTO.TareaDTO;
 import com.spring.backend.models.Tarea;
 import com.spring.backend.repository.TareaRepository;
 
-public class implementacionTareaService {
+@Service
+public class ImplementacionTareaService {
 
 	@Autowired
 	private TareaRepository tareaRepository;
 		
-	public List<Tarea> obtenerDetalles(){
+	public List<Tarea> obtenerTareas(){
 		return tareaRepository.findAll();
 	}
 
-	public Optional<Tarea> detalleContacto(Integer id) {
+	public Optional<Tarea> detalleTarea(Integer id) {
 		return tareaRepository.findById(id);
 	}
 
 	public Tarea agregarTarea(TareaDTO tarea) {
 		
 		//private String titulo;
-		//private String titulo;
+		//private String tipo;
 		Tarea auxiliar = new Tarea();
 		auxiliar.setTitulo(tarea.getTitulo());
 		auxiliar.setTipo(tarea.getTipo());

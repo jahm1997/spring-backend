@@ -39,4 +39,5 @@ public class DetalleTareaDTO {
 		this.fechaGeneracion = fechaGeneracion;
 	}
 	
+	
 }

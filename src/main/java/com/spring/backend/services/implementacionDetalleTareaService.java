@@ -11,7 +11,7 @@ import com.spring.backend.models.DetalleTarea;
 import com.spring.backend.repository.DetalleTareaRepository;
 
 @Service
-public class implementacionDetalleTareaService {
+public class ImplementacionDetalleTareaService {
 
 		@Autowired
 		private DetalleTareaRepository detalleTareaRepository;
@@ -20,11 +20,11 @@ public class implementacionDetalleTareaService {
 			return detalleTareaRepository.findAll();
 		}
 
-		public Optional<DetalleTarea> detalleContacto(Integer id) {
+		public Optional<DetalleTarea> detalles(Integer id) {
 			return detalleTareaRepository.findById(id);
 		}
 
-		public DetalleTarea agregarTarea(DetalleTareaDTO detalleTarea) {
+		public DetalleTarea agregarDetalles(DetalleTareaDTO detalleTarea) {
 			
 			//private String responsable;
 			//private Date fechaLimite;
@@ -41,7 +41,7 @@ public class implementacionDetalleTareaService {
 	        return auxiliar;
 		}
 
-		public DetalleTarea borrarTarea(Integer id) {
+		public DetalleTarea borrarDetalles(Integer id) {
 	        Optional<DetalleTarea> detalleOptional = detalleTareaRepository.findById(id);
 	        if (detalleOptional.isPresent()) {
 	        	DetalleTarea detalle = detalleOptional.get();

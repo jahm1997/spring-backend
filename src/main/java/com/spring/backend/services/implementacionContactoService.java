@@ -11,7 +11,7 @@ import com.spring.backend.models.Contacto;
 import com.spring.backend.repository.ContactoRepository;
 
 @Service
-public class implementacionContactoService {
+public class ImplementacionContactoService {
 
 	@Autowired
 	private ContactoRepository contactoRepository;

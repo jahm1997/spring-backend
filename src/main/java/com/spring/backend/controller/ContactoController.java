@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.spring.backend.DTO.ContactoDTO;
 import com.spring.backend.models.Contacto;
-import com.spring.backend.services.implementacionContactoService;
+import com.spring.backend.services.ImplementacionContactoService;
 
 @RestController
 @RequestMapping("/contactos")
@@ -22,11 +22,11 @@ public class ContactoController {
 
 	
 	@Autowired
-    private implementacionContactoService contactoService;
+    private ImplementacionContactoService contactoService;
     
     @GetMapping("")
-    public List<Contacto> obtenerContactos() {
-    	System.out.println("Hola K Hce");
+    public List<Contacto> getContactos() {
+    	System.out.println("Esto es / del controllador Contactos");
         return contactoService.obtenerContacto();
     }
     

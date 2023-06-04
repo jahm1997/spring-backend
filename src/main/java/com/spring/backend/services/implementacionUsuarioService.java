@@ -4,12 +4,14 @@ import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import com.spring.backend.DTO.UsuarioDTO;
 import com.spring.backend.models.Usuario;
 import com.spring.backend.repository.UsuarioRepository;
 
-public class implementacionUsuarioService {
+@Service
+public class ImplementacionUsuarioService {
 
 	@Autowired
 	private UsuarioRepository usuarioRepository;
@@ -22,7 +24,7 @@ public class implementacionUsuarioService {
 		return usuarioRepository.findById(id);
 	}
 
-	public Usuario agregarTarea(UsuarioDTO usuario) {
+	public Usuario agregarUsuario(UsuarioDTO usuario) {
 		
 
 		//private String nombres;

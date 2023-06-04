@@ -25,14 +25,6 @@ public class DetalleTarea {
 		// TODO Auto-generated constructor stub
 	}
 
-	public DetalleTarea(Integer id, String responsable, Date fechaLimite, Date fechaGeneracion) {
-		super();
-		this.id = id;
-		this.responsable = responsable;
-		this.fechaLimite = fechaLimite;
-		this.fechaGeneracion = fechaGeneracion;
-	}
-		
 	public Integer getId() {
 		return id;
 	}
@@ -65,7 +57,19 @@ public class DetalleTarea {
 		this.fechaGeneracion = fechaGeneracion;
 	}
 
-	
-	
+	@Override
+	public String toString() {
+		return "DetalleTarea [id=" + id + ", responsable=" + responsable + ", fechaLimite=" + fechaLimite
+				+ ", fechaGeneracion=" + fechaGeneracion + "]";
+	}
+
+	public DetalleTarea(Integer id, String responsable, Date fechaLimite, Date fechaGeneracion) {
+		super();
+		this.id = id;
+		this.responsable = responsable;
+		this.fechaLimite = fechaLimite;
+		this.fechaGeneracion = fechaGeneracion;
+	}
+
 	
 }
