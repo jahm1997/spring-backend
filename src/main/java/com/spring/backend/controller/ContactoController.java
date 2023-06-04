@@ -4,27 +4,29 @@ import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 
 import com.spring.backend.DTO.ContactoDTO;
 import com.spring.backend.models.Contacto;
 import com.spring.backend.services.implementacionContactoService;
 
-@Controller
+@RestController
 @RequestMapping("/contactos")
 public class ContactoController {
 
+	
 	@Autowired
     private implementacionContactoService contactoService;
     
     @GetMapping("")
     public List<Contacto> obtenerContactos() {
+    	System.out.println("Hola K Hce");
         return contactoService.obtenerContacto();
     }
     
