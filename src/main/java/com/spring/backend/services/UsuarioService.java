@@ -3,6 +3,7 @@ package com.spring.backend.services;
 import java.util.List;
 import java.util.Optional;
 
+import org.bson.types.ObjectId;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -11,7 +12,7 @@ import com.spring.backend.models.Usuario;
 import com.spring.backend.repository.UsuarioRepository;
 
 @Service
-public class ImplementacionUsuarioService {
+public class UsuarioService {
 
 	@Autowired
 	private UsuarioRepository usuarioRepository;
@@ -20,8 +21,9 @@ public class ImplementacionUsuarioService {
 		return usuarioRepository.findAll();
 	}
 
-	public Optional<Usuario> detalleUsuario(Integer id) {
-		return usuarioRepository.findById(id);
+	public Optional<Usuario> detalleUsuario(String id) {
+		ObjectId oid = new ObjectId(id);
+		return usuarioRepository.findById(oid);
 	}
 
 	public Usuario agregarUsuario(UsuarioDTO usuario) {
@@ -54,12 +56,12 @@ public class ImplementacionUsuarioService {
         return auxiliar;
 	}
 
-	public Usuario borrarUsuario(Integer id) {
-        Optional<Usuario> usuarioOptional = usuarioRepository.findById(id);
+	public Usuario borrarUsuario(String id) {
+		ObjectId oid = new ObjectId(id);
+        Optional<Usuario> usuarioOptional = usuarioRepository.findById(oid);
         if (usuarioOptional.isPresent()) {
-        	Usuario usuario = usuarioOptional.get();
-        	usuarioRepository.deleteById(usuario.getId());
-            return usuario;
+        	usuarioRepository.deleteById(oid);
+            return usuarioOptional.get();
         } else {
             return null;
         }

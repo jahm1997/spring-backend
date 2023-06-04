@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.spring.backend.DTO.ContactoDTO;
 import com.spring.backend.models.Contacto;
-import com.spring.backend.services.ImplementacionContactoService;
+import com.spring.backend.services.ContactoService;
 
 @RestController
 @RequestMapping("/contactos")
@@ -22,29 +22,29 @@ public class ContactoController {
 
 	
 	@Autowired
-    private ImplementacionContactoService contactoService;
+    private ContactoService contactoService;
     
     @GetMapping("")
-    public List<Contacto> getContactos() {
+    public List<Contacto> obtenerContactos() {
     	System.out.println("Esto es / del controllador Contactos");
         return contactoService.obtenerContacto();
     }
     
     @GetMapping("/detalles/{id}")
-    public Optional<Contacto> selectContacto(@PathVariable String id) {
-    	Integer numero = Integer.parseInt(id);
-        return contactoService.detalleContacto(numero);
+    public Optional<Contacto> detalleContacto(@PathVariable String id) {
+        return contactoService.detalleContacto(id);
     }
     
     @PostMapping("/cargue")
-    public Contacto addContacto(@RequestBody ContactoDTO contacto) {
+    public Contacto agregarContacto(@RequestBody ContactoDTO contacto) {
+    	System.out.println(contacto);
         return contactoService.agregarContacto(contacto);
     }
     
     @DeleteMapping("/borrar/{id}")
-    public Contacto deleteContacto(@PathVariable String id) {
-    	Integer variable = Integer.parseInt(id);
-        return contactoService.borrarContacto(variable);
+    public Contacto borrarContacto(@PathVariable String id) {
+    	System.out.println("Este es el id:" + id);
+        return contactoService.borrarContacto(id);
     }
 	
 }

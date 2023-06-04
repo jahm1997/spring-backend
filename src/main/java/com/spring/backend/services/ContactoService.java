@@ -3,6 +3,7 @@ package com.spring.backend.services;
 import java.util.List;
 import java.util.Optional;
 
+import org.bson.types.ObjectId;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -11,7 +12,7 @@ import com.spring.backend.models.Contacto;
 import com.spring.backend.repository.ContactoRepository;
 
 @Service
-public class ImplementacionContactoService {
+public class ContactoService {
 
 	@Autowired
 	private ContactoRepository contactoRepository;
@@ -20,8 +21,9 @@ public class ImplementacionContactoService {
 		return contactoRepository.findAll();
 	}
 
-	public Optional<Contacto> detalleContacto(Integer id) {
-		return contactoRepository.findById(id);
+	public Optional<Contacto> detalleContacto(String id) {
+		 ObjectId oid = new ObjectId(id);
+		return contactoRepository.findById(oid);
 	}
 
 	public Contacto agregarContacto(ContactoDTO contacto) {
@@ -45,6 +47,7 @@ public class ImplementacionContactoService {
 		auxiliar.setTipoContacto(contacto.getTipoContacto());
 		auxiliar.setOrigen(contacto.getOrigen());
 		try {
+			System.out.println("Linea 48 antes de agregar contacto");
             contactoRepository.save(auxiliar);
         } catch (Exception e) {
             System.out.println(e.getMessage());
@@ -52,12 +55,12 @@ public class ImplementacionContactoService {
         return auxiliar;
 	}
 
-	public Contacto borrarContacto(Integer id) {
-        Optional<Contacto> contactoOptional = contactoRepository.findById(id);
+	public Contacto borrarContacto(String id) {
+		ObjectId oid = new ObjectId(id);
+        Optional<Contacto> contactoOptional = contactoRepository.findById(oid);
         if (contactoOptional.isPresent()) {
-            Contacto contacto = contactoOptional.get();
-            contactoRepository.deleteById(contacto.getId());
-            return contacto;
+            contactoRepository.deleteById(oid);
+            return contactoOptional.get();
         } else {
             return null;
         }

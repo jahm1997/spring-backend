@@ -3,6 +3,7 @@ package com.spring.backend.services;
 import java.util.List;
 import java.util.Optional;
 
+import org.bson.types.ObjectId;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -11,7 +12,7 @@ import com.spring.backend.models.DetalleTarea;
 import com.spring.backend.repository.DetalleTareaRepository;
 
 @Service
-public class ImplementacionDetalleTareaService {
+public class DetalleTareaService {
 
 		@Autowired
 		private DetalleTareaRepository detalleTareaRepository;
@@ -20,8 +21,9 @@ public class ImplementacionDetalleTareaService {
 			return detalleTareaRepository.findAll();
 		}
 
-		public Optional<DetalleTarea> detalles(Integer id) {
-			return detalleTareaRepository.findById(id);
+		public Optional<DetalleTarea> detalles(String id) {
+			ObjectId oid = new ObjectId(id);
+			return detalleTareaRepository.findById(oid);
 		}
 
 		public DetalleTarea agregarDetalles(DetalleTareaDTO detalleTarea) {
@@ -41,12 +43,12 @@ public class ImplementacionDetalleTareaService {
 	        return auxiliar;
 		}
 
-		public DetalleTarea borrarDetalles(Integer id) {
-	        Optional<DetalleTarea> detalleOptional = detalleTareaRepository.findById(id);
+		public DetalleTarea borrarDetalles(String id) {
+			ObjectId oid = new ObjectId(id);
+	        Optional<DetalleTarea> detalleOptional = detalleTareaRepository.findById(oid);
 	        if (detalleOptional.isPresent()) {
-	        	DetalleTarea detalle = detalleOptional.get();
-	            detalleTareaRepository.deleteById(detalle.getId());
-	            return detalle;
+	            detalleTareaRepository.deleteById(oid);
+	            return detalleOptional.get();
 	        } else {
 	            return null;
 	        }

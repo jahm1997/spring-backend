@@ -8,7 +8,7 @@ import org.springframework.data.mongodb.core.mapping.Field;
 public class Tarea {
 	
 	@Id
-	private Integer id;
+	private String id;
 	
 	@Field(name = "tipo")
 	private String tipo;
@@ -20,18 +20,18 @@ public class Tarea {
 		// TODO Auto-generated constructor stub
 	}
 
-	public Tarea(Integer id, String tipo, String titulo) {
+	public Tarea(String id, String tipo, String titulo) {
 		super();
 		this.id = id;
 		this.tipo = tipo;
 		this.titulo = titulo;
 	}
 
-	public Integer getId() {
+	public String getId() {
 		return id;
 	}
 
-	public void setId(Integer id) {
+	public void setId(String id) {
 		this.id = id;
 	}
 

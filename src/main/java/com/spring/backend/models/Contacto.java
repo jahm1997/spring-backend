@@ -2,6 +2,7 @@ package com.spring.backend.models;
 
 import java.util.Date;
 
+import org.bson.types.ObjectId;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 import org.springframework.data.mongodb.core.mapping.Field;
@@ -12,7 +13,8 @@ import org.springframework.data.mongodb.core.mapping.FieldType;
 public class Contacto {
 	
 	@Id
-	private Integer id;
+	private String id;
+	
 	@Field(name = "nombres")
 	private String nombres;
 	
@@ -44,7 +46,7 @@ public class Contacto {
 
 	
 
-	public Contacto(Integer id, String nombres, String apellidos, String email, String telefono, Date fechaNacimiento,
+	public Contacto(String id, String nombres, String apellidos, String email, String telefono, Date fechaNacimiento,
 			String direccion, String tipoContacto, String origen) {
 		super();
 		this.id = id;
@@ -60,12 +62,12 @@ public class Contacto {
 
 
 
-	public Integer getId() {
+	public String getId() {
 		return id;
 	}
 
 
-	public void setId(Integer id) {
+	public void setId(String id) {
 		this.id = id;
 	}
 

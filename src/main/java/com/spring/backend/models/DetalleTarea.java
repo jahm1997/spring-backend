@@ -10,7 +10,7 @@ import org.springframework.data.mongodb.core.mapping.FieldType;
 @Document(collection = "detalleTarea")
 public class DetalleTarea {
 	@Id
-	private Integer id;
+	private String id;
 	
 	@Field(name = "responsable")
 	private String responsable;
@@ -25,11 +25,11 @@ public class DetalleTarea {
 		// TODO Auto-generated constructor stub
 	}
 
-	public Integer getId() {
+	public String getId() {
 		return id;
 	}
 
-	public void setId(Integer id) {
+	public void setId(String id) {
 		this.id = id;
 	}
 
@@ -63,7 +63,7 @@ public class DetalleTarea {
 				+ ", fechaGeneracion=" + fechaGeneracion + "]";
 	}
 
-	public DetalleTarea(Integer id, String responsable, Date fechaLimite, Date fechaGeneracion) {
+	public DetalleTarea(String id, String responsable, Date fechaLimite, Date fechaGeneracion) {
 		super();
 		this.id = id;
 		this.responsable = responsable;

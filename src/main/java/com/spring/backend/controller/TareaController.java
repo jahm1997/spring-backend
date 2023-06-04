@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.spring.backend.DTO.TareaDTO;
 import com.spring.backend.models.Tarea;
-import com.spring.backend.services.ImplementacionTareaService;
+import com.spring.backend.services.TareaService;
 
 
 @RestController
@@ -22,7 +22,7 @@ import com.spring.backend.services.ImplementacionTareaService;
 public class TareaController {
 
 	@Autowired
-	private ImplementacionTareaService tareaService;
+	private TareaService tareaService;
 	
 	@GetMapping("")
 	public List<Tarea> tareas(){
@@ -32,18 +32,17 @@ public class TareaController {
 	
 	@GetMapping("/detalles/{id}")
     public Optional<Tarea> detalles(@PathVariable String id) {
-		Integer numero = Integer.parseInt(id);
-        return tareaService.detalleTarea(numero);
+        return tareaService.detalleTarea(id);
     }
     
     @PostMapping("/cargue")
     public Tarea agregar(@RequestBody TareaDTO tarea) {
+    	System.out.println("Linea 41 antes al recibir una tarea: " + tarea);
         return tareaService.agregarTarea(tarea);
     }
     
     @DeleteMapping("/borrar/{id}")
     public Tarea borrar(@PathVariable String id) {
-    	Integer variable = Integer.parseInt(id);
-    	return tareaService.borrarTarea(variable);
+    	return tareaService.borrarTarea(id);
     }
 }

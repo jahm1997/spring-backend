@@ -14,25 +14,24 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.spring.backend.DTO.DetalleTareaDTO;
 import com.spring.backend.models.DetalleTarea;
-import com.spring.backend.services.ImplementacionDetalleTareaService;
+import com.spring.backend.services.DetalleTareaService;
 
 @RestController
 @RequestMapping("/detalles")
 public class DetalleTareasController {
 	
 	@Autowired
-	private ImplementacionDetalleTareaService detalleTareaService;
+	private DetalleTareaService detalleTareaService;
 	
 	@GetMapping("")
-	public List<DetalleTarea> getDetalleTareas(){
+	public List<DetalleTarea> obtenerDetalleTareas(){
 		System.out.println("Esto es / de obtenerDetalleTareas");
 		return detalleTareaService.obtenerDetalles();
 	}
 	
 	@GetMapping("/detalles/{id}")
-    public Optional<DetalleTarea> selectDetalleTarea(@PathVariable String id) {
-		Integer numero = Integer.parseInt(id);
-        return detalleTareaService.detalles(numero);
+    public Optional<DetalleTarea> detallesTarea(@PathVariable String id) {
+        return detalleTareaService.detalles(id);
     }
     
     @PostMapping("/cargue")
@@ -42,8 +41,7 @@ public class DetalleTareasController {
     
     @DeleteMapping("/borrar/{id}")
     public DetalleTarea borrarDetalles(@PathVariable String id) {
-    	Integer variable = Integer.parseInt(id);
-        return detalleTareaService.borrarDetalles(variable);
+        return detalleTareaService.borrarDetalles(id);
     }
 	
 	

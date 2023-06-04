@@ -3,6 +3,7 @@ package com.spring.backend.services;
 import java.util.List;
 import java.util.Optional;
 
+import org.bson.types.ObjectId;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -11,7 +12,7 @@ import com.spring.backend.models.Tarea;
 import com.spring.backend.repository.TareaRepository;
 
 @Service
-public class ImplementacionTareaService {
+public class TareaService {
 
 	@Autowired
 	private TareaRepository tareaRepository;
@@ -20,8 +21,9 @@ public class ImplementacionTareaService {
 		return tareaRepository.findAll();
 	}
 
-	public Optional<Tarea> detalleTarea(Integer id) {
-		return tareaRepository.findById(id);
+	public Optional<Tarea> detalleTarea(String id) {
+		ObjectId oid = new ObjectId(id);
+		return tareaRepository.findById(oid);
 	}
 
 	public Tarea agregarTarea(TareaDTO tarea) {
@@ -32,19 +34,20 @@ public class ImplementacionTareaService {
 		auxiliar.setTitulo(tarea.getTitulo());
 		auxiliar.setTipo(tarea.getTipo());
 		try {
-			tareaRepository.save(auxiliar);
+			System.out.println("Linea 35 antes de guardar una tarea: " + auxiliar);
+			return tareaRepository.save(auxiliar);
         } catch (Exception e) {
             System.out.println(e.getMessage());
         }
-        return auxiliar;
+		return auxiliar;
 	}
 
-	public Tarea borrarTarea(Integer id) {
-        Optional<Tarea> tareaOptional = tareaRepository.findById(id);
+	public Tarea borrarTarea(String id) {
+		ObjectId oid = new ObjectId(id);
+        Optional<Tarea> tareaOptional = tareaRepository.findById(oid);
         if (tareaOptional.isPresent()) {
-        	Tarea tarea = tareaOptional.get();
-            tareaRepository.deleteById(tarea.getId());
-            return tarea;
+            tareaRepository.deleteById(oid);
+            return tareaOptional.get();
         } else {
             return null;
         }

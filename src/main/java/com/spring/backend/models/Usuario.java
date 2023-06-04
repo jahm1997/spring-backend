@@ -11,7 +11,7 @@ import org.springframework.data.mongodb.core.mapping.FieldType;
 public class Usuario {
 	
 	@Id
-	private Integer id;
+	private String id;
 	
 	@Field(name = "nombres")
 	private String nombres;
@@ -42,7 +42,7 @@ public class Usuario {
 		// TODO Auto-generated constructor stub
 	}
 
-	public Usuario(Integer id, String nombres, String apellidos, String email, String telefono, Date fechaNacimiento,
+	public Usuario(String id, String nombres, String apellidos, String email, String telefono, Date fechaNacimiento,
 			String direccion, String tipoContacto, String origen) {
 		super();
 		this.id = id;
@@ -56,11 +56,11 @@ public class Usuario {
 		this.origen = origen;
 	}
 
-	public Integer getId() {
+	public String getId() {
 		return id;
 	}
 
-	public void setId(Integer id) {
+	public void setId(String id) {
 		this.id = id;
 	}
 

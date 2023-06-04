@@ -15,14 +15,14 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.spring.backend.DTO.UsuarioDTO;
 import com.spring.backend.models.Usuario;
-import com.spring.backend.services.ImplementacionUsuarioService;
+import com.spring.backend.services.UsuarioService;
 
 @RestController
 @RequestMapping("/usuario")
 public class UsuarioController {
 
 	@Autowired
-	private ImplementacionUsuarioService usuarioService	;
+	private UsuarioService usuarioService	;
 	
 	@GetMapping("")
 	public List<Usuario> obtenerUsuario(){
@@ -32,8 +32,7 @@ public class UsuarioController {
 	
 	@GetMapping("/detalles/{id}")
     public Optional<Usuario> detalleUsuario(@PathVariable String id) {
-		Integer numero = Integer.parseInt(id);
-        return usuarioService.detalleUsuario(numero);
+        return usuarioService.detalleUsuario(id);
     }
     
     @PostMapping("/cargue")
@@ -43,8 +42,7 @@ public class UsuarioController {
     
     @DeleteMapping("/borrar/{id}")
     public Usuario borrarUsuario(@PathVariable String id) {
-    	Integer variable = Integer.parseInt(id);
-    	return usuarioService.borrarUsuario(variable);
+    	return usuarioService.borrarUsuario(id);
     }
 	
 }
