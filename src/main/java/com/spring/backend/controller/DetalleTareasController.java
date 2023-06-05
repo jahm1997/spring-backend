@@ -17,7 +17,7 @@ import com.spring.backend.DTO.DetalleTareaDTO;
 import com.spring.backend.models.DetalleTarea;
 import com.spring.backend.services.DetalleTareaService;
 
-@CrossOrigin("http://localhost:8080")
+@CrossOrigin("*")
 @RestController
 @RequestMapping("/detalles")
 public class DetalleTareasController {

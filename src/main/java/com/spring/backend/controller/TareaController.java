@@ -17,7 +17,7 @@ import com.spring.backend.DTO.TareaDTO;
 import com.spring.backend.models.Tarea;
 import com.spring.backend.services.TareaService;
 
-@CrossOrigin("http://localhost:8080")
+@CrossOrigin("*")
 @RestController
 @RequestMapping("/tarea")
 public class TareaController {

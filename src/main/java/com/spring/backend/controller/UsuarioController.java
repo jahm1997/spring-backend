@@ -18,9 +18,9 @@ import com.spring.backend.DTO.UsuarioDTO;
 import com.spring.backend.models.Usuario;
 import com.spring.backend.services.UsuarioService;
 
-@CrossOrigin("http://localhost:8080")
+@CrossOrigin("*")
 @RestController
-@RequestMapping("/usuario")
+@RequestMapping("/usuarios")
 public class UsuarioController {
 
 	@Autowired
@@ -34,6 +34,7 @@ public class UsuarioController {
 	
 	@GetMapping("/detalles/{id}")
     public Optional<Usuario> detalleUsuario(@PathVariable String id) {
+		System.out.println(id);
         return usuarioService.detalleUsuario(id);
     }
     

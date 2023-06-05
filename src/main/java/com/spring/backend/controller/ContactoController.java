@@ -17,7 +17,7 @@ import com.spring.backend.DTO.ContactoDTO;
 import com.spring.backend.models.Contacto;
 import com.spring.backend.services.ContactoService;
 
-@CrossOrigin("http://localhost:8080")
+@CrossOrigin("*")
 @RestController
 @RequestMapping("/contactos")
 public class ContactoController {
