@@ -1,6 +1,7 @@
 package com.spring.backend.models;
 
 import java.util.Date;
+import java.util.List;
 
 import org.bson.types.ObjectId;
 import org.springframework.data.annotation.Id;
@@ -39,15 +40,14 @@ public class Contacto {
 	@Field(name = "origen")
 	private String origen;
 	
+	private List<Tarea> tareas;
 	
-	public Contacto() {
-		// TODO Auto-generated constructor stub
+	public List<Tarea> getTareas() {
+		return tareas;
 	}
 
-	
-
 	public Contacto(String id, String nombres, String apellidos, String email, String telefono, Date fechaNacimiento,
-			String direccion, String tipoContacto, String origen) {
+			String direccion, String tipoContacto, String origen, List<Tarea> tareas) {
 		super();
 		this.id = id;
 		this.nombres = nombres;
@@ -58,9 +58,18 @@ public class Contacto {
 		this.direccion = direccion;
 		this.tipoContacto = tipoContacto;
 		this.origen = origen;
+		this.tareas = tareas;
+	}
+
+	public void setContactos(List<Tarea> tareas) {
+		this.tareas = tareas;
 	}
 
 
+
+	public Contacto() {
+		// TODO Auto-generated constructor stub
+	}
 
 	public String getId() {
 		return id;

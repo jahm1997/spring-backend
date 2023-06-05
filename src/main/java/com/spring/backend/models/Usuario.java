@@ -1,6 +1,7 @@
 package com.spring.backend.models;
 
 import java.util.Date;
+import java.util.List;
 
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
@@ -37,13 +38,14 @@ public class Usuario {
 	@Field(name = "origen")
 	private String origen;
 	
+	private List<Contacto> contactos;
 	
 	public Usuario() {
 		// TODO Auto-generated constructor stub
 	}
 
 	public Usuario(String id, String nombres, String apellidos, String email, String telefono, Date fechaNacimiento,
-			String direccion, String tipoContacto, String origen) {
+			String direccion, String tipoContacto, String origen, List<Contacto> contactos) {
 		super();
 		this.id = id;
 		this.nombres = nombres;
@@ -54,7 +56,22 @@ public class Usuario {
 		this.direccion = direccion;
 		this.tipoContacto = tipoContacto;
 		this.origen = origen;
+		this.contactos = contactos;
 	}
+
+
+
+	public List<Contacto> getContactos() {
+		return contactos;
+	}
+
+
+
+	public void setContactos(List<Contacto> contactos) {
+		this.contactos = contactos;
+	}
+
+
 
 	public String getId() {
 		return id;

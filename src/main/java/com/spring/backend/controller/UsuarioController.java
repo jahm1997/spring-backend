@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -17,6 +18,7 @@ import com.spring.backend.DTO.UsuarioDTO;
 import com.spring.backend.models.Usuario;
 import com.spring.backend.services.UsuarioService;
 
+@CrossOrigin("http://localhost:8080")
 @RestController
 @RequestMapping("/usuario")
 public class UsuarioController {
