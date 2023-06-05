@@ -28,13 +28,13 @@ public class UsuarioController {
 	
 	@GetMapping("")
 	public List<Usuario> obtenerUsuario(){
-		System.out.println("Esto es / del controllador usuario");
+		//System.out.println("Esto es / del controllador usuario");
 		return usuarioService.obtenerUsuarios();
 	}
 	
 	@GetMapping("/detalles/{id}")
     public Optional<Usuario> detalleUsuario(@PathVariable String id) {
-		System.out.println(id);
+		//System.out.println(id);
         return usuarioService.detalleUsuario(id);
     }
     

@@ -1,5 +1,5 @@
 import axios from "axios";
-import { CONTACTOS, USUARIO, USUARIOS } from "./actions-types";
+import { CONTACTOS, USUARIO, USUARIOS, FILTER, ORDEN } from "./actions-types";
 
 export const ERROR = "error";
 
@@ -16,7 +16,9 @@ export const obtenerUsuarios = () => async (dispatch) => {
 
 export const atraparUsuario = (usuario) => async (dispatch) => {
   try {
-    const response = await axios.get(`${endpoint}/detalles/${usuario}`);
+    const response = await axios.get(
+      `${endpoint}/usuarios/detalles/${usuario}`
+    );
     return dispatch({ type: USUARIO, payload: response.data });
   } catch (error) {
     return dispatch({ type: ERROR, payload: error });
@@ -39,29 +41,10 @@ export const atraparContactos = () => async (dispatch) => {
   }
 };
 
-// export const filterCards = (valor, propiedad) => async (dispatch) => {
-//   const response = await axios.get(
-//     `https://api-production-8578.up.railway.app/dogs`
-//   );
-//   const perros = response.data;
-//   try {
-//     if (valor !== "") {
-//       var filter = perros.filter((dog) =>
-//         dog[propiedad]?.toLowerCase().includes(valor)
-//       );
-//     }
+export const filterCards = (valor) => async (dispatch) => {
+  return dispatch({ type: FILTER, payload: valor });
+};
 
-//     if (filter.length === 0) {
-//       alert("no encontramos coincidencias");
-//       return dispatch({ type: FILTER, payload: response.data });
-//     }
-
-//     return dispatch({ type: FILTER, payload: filter });
-//   } catch (error) {
-//     return dispatch({ type: ERROR, payload: error });
-//   }
-// };
-
-// export const orderCards = (string) => (dispatch) => {
-//   return dispatch({ type: ORDER, payload: string });
-// };
+export const orderCards = (string) => (dispatch) => {
+  return dispatch({ type: ORDEN, payload: string });
+};

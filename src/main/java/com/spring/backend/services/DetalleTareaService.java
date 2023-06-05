@@ -22,8 +22,7 @@ public class DetalleTareaService {
 		}
 
 		public Optional<DetalleTarea> detalles(String id) {
-			ObjectId oid = new ObjectId(id);
-			return detalleTareaRepository.findById(oid);
+			return detalleTareaRepository.findById(id);
 		}
 
 		public DetalleTarea agregarDetalles(DetalleTareaDTO detalleTarea) {
@@ -44,15 +43,13 @@ public class DetalleTareaService {
 		}
 
 		public DetalleTarea borrarDetalles(String id) {
-			ObjectId oid = new ObjectId(id);
-	        Optional<DetalleTarea> detalleOptional = detalleTareaRepository.findById(oid);
+	        Optional<DetalleTarea> detalleOptional = detalleTareaRepository.findById(id);
 	        if (detalleOptional.isPresent()) {
-	            detalleTareaRepository.deleteById(oid);
+	            detalleTareaRepository.deleteById(id);
 	            return detalleOptional.get();
 	        } else {
 	            return null;
-	        }
-			
+	        }			
 		}
 
 	

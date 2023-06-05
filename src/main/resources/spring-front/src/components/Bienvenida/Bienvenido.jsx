@@ -3,7 +3,7 @@ import { Link, useNavigate } from "react-router-dom"
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 
-import { obtenerUsuarios } from "../redux/actions";
+import { obtenerUsuarios, atraparUsuario, atraparContactos } from "../redux/actions";
 
 const Bienvenido = () => {
 
@@ -12,28 +12,26 @@ const Bienvenido = () => {
 
     const {usuarios} = useSelector(state => state)
     const [seleccion,setSeleccion] = useState({
-        usuario: "seleccionar"
+        login: "seleccionar"
     })
 
     const select = (e) =>{
-        console.log("Cambió: " + e.target.value)
-        // setSeleccion({
-        //   ...seleccion,
-        //   usuario:e.target.value
-        // })
+        setSeleccion({
+          ...seleccion,
+          login:e.target.value
+        })
     }
 
     const handleClick = () => {
-        console.log(seleccion)
-        console.log("------------------------------------------------")
-        console.log("Esto es usuarios = " + typeof usuarios)
-        // dispatch(atraparUsuario(seleccion.usuario))
-        // traslado(`/inicio`)
+        if(seleccion.login !== "seleccionar"){
+            dispatch(atraparUsuario(seleccion.login))
+            traslado(`/inicio`)
+        }
       };
     
-    console.log(usuarios);
     useEffect(() => {
         dispatch(obtenerUsuarios())
+        dispatch(atraparContactos())
       }, [dispatch])
     
 return (
@@ -47,7 +45,7 @@ return (
             <select  onChange={(e) =>  select(e)} >
                 <option disabled >Seleccionar </option>
                 {usuarios.map(e=>
-                    <option  key={e.id} value={e.id} >{e.nombre}</option>
+                    <option  key={e.id} value={e.id} >{e.nombres}</option>
                     )}
             </select>
             <div>

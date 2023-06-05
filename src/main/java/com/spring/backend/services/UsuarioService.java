@@ -3,7 +3,6 @@ package com.spring.backend.services;
 import java.util.List;
 import java.util.Optional;
 
-import org.bson.types.ObjectId;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -22,13 +21,11 @@ public class UsuarioService {
 	}
 
 	public Optional<Usuario> detalleUsuario(String id) {
-		ObjectId oid = new ObjectId(id);
-		return usuarioRepository.findById(oid);
+		return usuarioRepository.findById(id);
 	}
 
 	public Usuario agregarUsuario(UsuarioDTO usuario) {
-		
-
+	
 		//private String nombres;
 		//private String apellidos;
 		//private String email;
@@ -57,10 +54,9 @@ public class UsuarioService {
 	}
 
 	public Usuario borrarUsuario(String id) {
-		ObjectId oid = new ObjectId(id);
-        Optional<Usuario> usuarioOptional = usuarioRepository.findById(oid);
+        Optional<Usuario> usuarioOptional = usuarioRepository.findById(id);
         if (usuarioOptional.isPresent()) {
-        	usuarioRepository.deleteById(oid);
+        	usuarioRepository.deleteById(id);
             return usuarioOptional.get();
         } else {
             return null;

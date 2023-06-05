@@ -22,8 +22,7 @@ public class ContactoService {
 	}
 
 	public Optional<Contacto> detalleContacto(String id) {
-		 ObjectId oid = new ObjectId(id);
-		return contactoRepository.findById(oid);
+		return contactoRepository.findById(id);
 	}
 
 	public Contacto agregarContacto(ContactoDTO contacto) {
@@ -56,10 +55,9 @@ public class ContactoService {
 	}
 
 	public Contacto borrarContacto(String id) {
-		ObjectId oid = new ObjectId(id);
-        Optional<Contacto> contactoOptional = contactoRepository.findById(oid);
+        Optional<Contacto> contactoOptional = contactoRepository.findById(id);
         if (contactoOptional.isPresent()) {
-            contactoRepository.deleteById(oid);
+            contactoRepository.deleteById(id);
             return contactoOptional.get();
         } else {
             return null;

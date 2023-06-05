@@ -22,8 +22,7 @@ public class TareaService {
 	}
 
 	public Optional<Tarea> detalleTarea(String id) {
-		ObjectId oid = new ObjectId(id);
-		return tareaRepository.findById(oid);
+		return tareaRepository.findById(id);
 	}
 
 	public Tarea agregarTarea(TareaDTO tarea) {
@@ -43,10 +42,9 @@ public class TareaService {
 	}
 
 	public Tarea borrarTarea(String id) {
-		ObjectId oid = new ObjectId(id);
-        Optional<Tarea> tareaOptional = tareaRepository.findById(oid);
+        Optional<Tarea> tareaOptional = tareaRepository.findById(id);
         if (tareaOptional.isPresent()) {
-            tareaRepository.deleteById(oid);
+            tareaRepository.deleteById(id);
             return tareaOptional.get();
         } else {
             return null;

@@ -1,5 +1,5 @@
 import { ERROR } from "./actions";
-import { CONTACTOS, USUARIO, USUARIOS } from "./actions-types";
+import { CONTACTOS, USUARIO, USUARIOS, FILTER, ORDEN } from "./actions-types";
 
 const inicialState = {
   contactos: [],
@@ -28,6 +28,42 @@ const reducer = (state = inicialState, action) => {
         ...state,
         contactos: action.payload,
       };
+    case FILTER:
+      if (action.payload !== "") {
+        var filter = state.contactos.filter(
+          (element) =>
+            element["nombres"]?.toLowerCase().includes(action.payload) ||
+            element["apellidos"]?.toLowerCase().includes(action.payload)
+        );
+        return {
+          ...state,
+          contactos: filter,
+        };
+      }
+    case ORDEN:
+      switch (action.payload) {
+        case "ascendente":
+          const temp = state.contactos.sort(
+            (a, b) =>
+              a.nombres.localeCompare(b.nombres) ||
+              a.apellidos.localeCompare(b.apellidos)
+          );
+          return {
+            ...state,
+            contactos: temp,
+          };
+        case "descendente":
+          const temp2 = state.contactos.sort(
+            (a, b) =>
+              b.nombres.localeCompare(a.nombres) ||
+              b.apellidos.localeCompare(a.apellidos)
+          );
+          return {
+            ...state,
+            contactos: temp2,
+          };
+      }
+
     default:
       return { ...state };
   }
