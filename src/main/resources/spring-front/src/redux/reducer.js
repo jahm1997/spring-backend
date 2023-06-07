@@ -1,8 +1,16 @@
 import { ERROR } from "./actions";
-import { CONTACTOS, USUARIO, USUARIOS, FILTER, ORDEN } from "./actions-types";
+import {
+  CONTACTOS,
+  CONTACTO,
+  USUARIO,
+  USUARIOS,
+  FILTER,
+  ORDEN,
+} from "./actions-types";
 
 const inicialState = {
   contactos: [],
+  contacto: [],
   usuarios: [],
   usuario: [],
 };
@@ -27,6 +35,11 @@ const reducer = (state = inicialState, action) => {
       return {
         ...state,
         contactos: action.payload,
+      };
+    case CONTACTO:
+      return {
+        ...state,
+        contacto: action.payload,
       };
     case FILTER:
       if (action.payload !== "") {

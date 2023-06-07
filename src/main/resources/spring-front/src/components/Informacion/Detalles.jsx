@@ -4,10 +4,10 @@ import { Link } from "react-router-dom";
 import { useState } from "react";
 import Modal from 'react-modal';
 
-const DetallesContacto = ({props,muestra,handleTriggerClick}) => {
+const DetallesContacto = ({props,muestra,handleTriggerClick, edicion}) => {
    
-
-
+  
+  console.log(props.id)
    return (
     <div className={style.abuelo}>
       <button className={style.boton}  onClick={handleTriggerClick}>
@@ -24,7 +24,7 @@ const DetallesContacto = ({props,muestra,handleTriggerClick}) => {
     </button>
 
     <div className={style.padre} >
-          <button className={style.item2} >editar</button>
+          <button className={style.item2} onClick={()=>edicion(props.id)} >editar</button>
           <button className={style.item3} >añadir tarea</button>
           <button className={style.item4} >borrar</button>
     </div>

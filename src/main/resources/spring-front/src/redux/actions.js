@@ -1,5 +1,12 @@
 import axios from "axios";
-import { CONTACTOS, USUARIO, USUARIOS, FILTER, ORDEN } from "./actions-types";
+import {
+  CONTACTOS,
+  CONTACTO,
+  USUARIO,
+  USUARIOS,
+  FILTER,
+  ORDEN,
+} from "./actions-types";
 
 export const ERROR = "error";
 
@@ -20,6 +27,17 @@ export const atraparUsuario = (usuario) => async (dispatch) => {
       `${endpoint}/usuarios/detalles/${usuario}`
     );
     return dispatch({ type: USUARIO, payload: response.data });
+  } catch (error) {
+    return dispatch({ type: ERROR, payload: error });
+  }
+};
+
+export const atraparContacto = (usuario) => async (dispatch) => {
+  try {
+    const response = await axios.get(
+      `${endpoint}/contactos/detalles/${usuario}`
+    );
+    return dispatch({ type: CONTACTO, payload: response.data });
   } catch (error) {
     return dispatch({ type: ERROR, payload: error });
   }
@@ -48,4 +66,9 @@ export const registrarUsuario = async (objeto) => {
 
 export const registrarContacto = async (objeto) => {
   return await axios.post(`${endpoint}/contactos/cargue`, objeto);
+};
+
+export const editarContacto = async (objeto) => {
+  console.log(objeto);
+  return await axios.put(`${endpoint}/actualizar/${objeto}`);
 };

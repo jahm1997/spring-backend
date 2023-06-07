@@ -5,7 +5,7 @@ import Navbar from "../../components/Navbar/Navbar";
 import DetallesContacto from "../../components/Informacion/Detalles";
 import { useDispatch, useSelector } from "react-redux"
 import { useNavigate } from "react-router-dom"
-import { filterCards, orderCards,atraparContactos } from "../../redux/actions"
+import { filterCards, orderCards, atraparContactos, editarContacto, atraparContacto,  } from "../../redux/actions"
 import Input from "../../components/inputs/Input";
 
 function Home() {
@@ -43,6 +43,12 @@ function Home() {
     setMuestra((prevMuestra) => (prevMuestra === contactoId ? null : contactoId));
   };
 
+  const edicion = (parametro) => {
+    console.log("linea 47 " + parametro)
+    dispatch(atraparContacto(parametro))
+    traslado(`/editar`)
+  }
+
   React.useEffect(() => {
     dispatch(atraparContactos(usuario))
   }, [dispatch,usuario])
@@ -53,7 +59,7 @@ function Home() {
       
       <h2>Lista de contactos</h2>
       <div className={style.mapeo} >
-        {contactos.map((contacto) => <DetallesContacto key={contacto.id} props={contacto} muestra={muestra === contacto.id} handleTriggerClick={() => handleTriggerClick(contacto.id)} />)}
+        {contactos.map((contacto) => <DetallesContacto key={contacto.id} props={contacto} muestra={muestra === contacto.id} handleTriggerClick={() => handleTriggerClick(contacto.id)} edicion={edicion} />)}
       </div>
 
       <div className={style.boton} >

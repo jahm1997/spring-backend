@@ -30,7 +30,6 @@ const Contacto = () => {
 
   const handleSubmit = (event) => {
     event.preventDefault()
-    console.log("simulamos que se agrega el nuevo contacto")
     registrarContacto(nuevo)
     alert("haz creado un nuevo contacto! :D")
     traslado("/inicio")
