@@ -3,7 +3,6 @@ package com.spring.backend.services;
 import java.util.List;
 import java.util.Optional;
 
-import org.bson.types.ObjectId;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -63,6 +62,25 @@ public class ContactoService {
             return null;
         }
 		
+	}
+	
+	public Contacto editarContacto( ContactoDTO contactoDTO, String id) {
+	    Optional<Contacto> contactoOptional = contactoRepository.findById(id);
+	    if (contactoOptional.isPresent()) {
+	        Contacto contacto = contactoOptional.get();
+	        contacto.setNombres(contactoDTO.getNombres());
+	        contacto.setApellidos(contactoDTO.getApellidos());
+	        contacto.setEmail(contactoDTO.getEmail());
+	        contacto.setDireccion(contactoDTO.getDireccion());
+	        contacto.setTelefono(contactoDTO.getTelefono());
+	        contacto.setFechaNacimiento(contactoDTO.getFechaNacimiento());
+	        contacto.setDireccion(contactoDTO.getDireccion());
+	        contacto.setTipoContacto(contactoDTO.getTipoContacto());
+	        contacto.setOrigen(contactoDTO.getOrigen());
+	        return contactoRepository.save(contacto);
+	    } else {
+	        return null;
+	    }
 	}
 
 }

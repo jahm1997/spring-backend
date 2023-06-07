@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -47,6 +48,12 @@ public class ContactoController {
     public Contacto borrarContacto(@PathVariable String id) {
     	System.out.println("Este es el id:" + id);
         return contactoService.borrarContacto(id);
+    }
+    
+    @PutMapping("/actualizar/{id}")
+    public Contacto actualizar(@RequestBody ContactoDTO contacto, String id) {
+    	System.out.println(contacto);
+    	return contactoService.editarContacto(contacto, id);
     }
 	
 }
