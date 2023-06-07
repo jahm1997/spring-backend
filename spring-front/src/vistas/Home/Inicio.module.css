@@ -1,0 +1,29 @@
+.contenedor{
+    box-sizing: border-box;
+    padding: 24px 16px;
+    text-align: center;
+    align-items: center;
+    overflow: hidden;
+
+}
+
+.mapeo{
+    background-color: lightgray;
+    box-sizing: border-box;
+    border-radius: 2rem;
+    padding: 20px 16px;
+    max-width: 70%;
+    margin: 0 15% 0 15%;
+    display: flex;
+    flex-direction: column;
+    overflow: auto;
+}
+
+.lista{
+    border: 1px solid blue ;
+    text-align: center;
+}
+.boton{
+    border: 1px solid rgb(178, 210, 17) ;
+    text-align: center;
+}
