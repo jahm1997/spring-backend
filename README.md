@@ -5,4 +5,4 @@ Aplicación de simulación de un pequeño CRM Trabajando tecnologias en el back 
 Inicialización del proyecto en springboot
 *Seleccionar el proyecto del lado del backend y darle inicializar
 
-*Abrir la carpeta del front con cualquier terminar (Se recomienda gitbash) y Ejecutar el comando "npm start"
+*Abrir la carpeta del front con cualquier terminar (Se recomienda gitbash) y Ejecutar el comando "npm install" para instalar los modulos y luego "npm start" para levantar el servidor
