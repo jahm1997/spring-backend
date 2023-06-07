@@ -4,7 +4,7 @@ Aplicación de simulación de un pequeño CRM Trabajando tecnologias en el back 
 
 Inicialización del proyecto en springboot
 
-1.* descargar el proyecto como zip o ejecutando "git clone https://github.com/jahm1997/spring-project.git"
+1.* descargar el proyecto como zip o ejecutando "git clone https://github.com/jahm1997/spring-project.git" en un terminal.
 
 *Seleccionar el proyecto del lado del backend y darle inicializar
 
