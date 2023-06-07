@@ -3,7 +3,7 @@ import { Link, useNavigate } from "react-router-dom"
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 
-import { obtenerUsuarios, atraparUsuario, atraparContactos } from "../redux/actions";
+import { obtenerUsuarios, atraparUsuario, atraparContactos } from "../../redux/actions";
 
 const Bienvenido = () => {
 
@@ -31,11 +31,10 @@ const Bienvenido = () => {
     
     useEffect(() => {
         dispatch(obtenerUsuarios())
-        dispatch(atraparContactos())
       }, [dispatch])
     
 return (
-    <div className={styled.divImagen}> 
+    <div className={styled.general}> 
             {/* <div className={styled.divBoton} >
                 <Link to={"/dogs"} >
                         <img  className={styled.img} src={Boton} alt="Boton Bienvenido" />

@@ -25,12 +25,13 @@ export const atraparUsuario = (usuario) => async (dispatch) => {
   }
 };
 
-// export const atraparUsuario = async (objeto) => {
-//   return await axios.post(
-//     "https://api-production-8578.up.railway.app/dogs/add",
-//     objeto
-//   );
-// };
+export const filterCards = (valor) => async (dispatch) => {
+  return dispatch({ type: FILTER, payload: valor });
+};
+
+export const orderCards = (string) => (dispatch) => {
+  return dispatch({ type: ORDEN, payload: string });
+};
 
 export const atraparContactos = () => async (dispatch) => {
   try {
@@ -41,10 +42,10 @@ export const atraparContactos = () => async (dispatch) => {
   }
 };
 
-export const filterCards = (valor) => async (dispatch) => {
-  return dispatch({ type: FILTER, payload: valor });
+export const registrarUsuario = async (objeto) => {
+  return await axios.post(`${endpoint}/usuarios/cargue`, objeto);
 };
 
-export const orderCards = (string) => (dispatch) => {
-  return dispatch({ type: ORDEN, payload: string });
+export const registrarContacto = async (objeto) => {
+  return await axios.post(`${endpoint}/contactos/cargue`, objeto);
 };
