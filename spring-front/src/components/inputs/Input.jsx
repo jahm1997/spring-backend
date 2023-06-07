@@ -2,11 +2,13 @@
 import style from "./Input.module.css";
 import React, { useState } from "react";
 
-const Input = ({ childrenOne, placeholder, buscar, noBuscar, childrenTwo}) => {
+const Input = ({ childrenOne, placeholder, buscar, noBuscar, filtrar, childrenTwo }) => {
   const [valor, setValor] = useState("");
 
   const handleChange = (e) => {
-    setValor(e.target.value);
+    const inputValor = e.target.value;
+    setValor(inputValor);
+    filtrar(inputValor);
   };
 
   const handleBuscarClick = () => {
@@ -28,8 +30,7 @@ const Input = ({ childrenOne, placeholder, buscar, noBuscar, childrenTwo}) => {
         value={valor}
         onChange={handleChange}
       />
-      <button onClick={handleBuscarClick}>{childrenOne}</button>
-      <button onClick={handleBuscarClickTwo}>{childrenTwo}</button>
+      <div>imagenBuscar</div>
     </div>
   );
 };

@@ -49,22 +49,32 @@ function Home() {
     traslado(`/editar`)
   }
 
+  const filtrarContactos = (valor) => {
+    if (valor.trim() === "") {
+      dispatch(atraparContactos(usuario));
+    } else {
+      dispatch(filterCards(valor));
+    }
+  };
+  
   React.useEffect(() => {
-    dispatch(atraparContactos(usuario))
-  }, [dispatch,usuario])
+    filtrarContactos(valor);
+  }, [valor, dispatch, usuario]);
 
   return (
     <div className={style.contenedor} >
-       <Input placeholder="Buscar" buscar={buscar} noBuscar={noBuscar} childrenOne="Buscar" childrenTwo="Limpiar" ></Input>
-      
+       <Input placeholder="Buscar" buscar={buscar} noBuscar={noBuscar} filtrar={filtrarContactos} chilrenOne="Buscar" chilrenTwo="Limpiar"></Input>
+    
       <h2>Lista de contactos</h2>
       <div className={style.mapeo} >
         {contactos.map((contacto) => <DetallesContacto key={contacto.id} props={contacto} muestra={muestra === contacto.id} handleTriggerClick={() => handleTriggerClick(contacto.id)} edicion={edicion} />)}
+
+        <div className={style.boton} >
+          <button onClick={handleClick} className="{}" >Agregar</button>
+        </div>
       </div>
 
-      <div className={style.boton} >
-        <button onClick={handleClick} className="{}" >Agregar</button>
-      </div>
+      <Navbar/>
     </div>
   )
 }

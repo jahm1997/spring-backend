@@ -7,6 +7,7 @@ const Tarea = () => {
   return (
     <div className="{style.menu}" >
           <h1>Este es vista tarea</h1>
+          <Link to="/inicio" >Ir Atras</Link>
     </div>
   );
 };

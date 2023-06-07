@@ -23,7 +23,6 @@ function App() {
         <Route path="/tarea" element={<Tarea />} />
         <Route path="/informacion" element={<Informacion />} />
       </Routes>
-      {location.pathname !== "/" ? <Navbar /> : false}
     </div>
   );
 }

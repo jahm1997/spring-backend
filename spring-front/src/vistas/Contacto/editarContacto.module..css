@@ -1,11 +1,15 @@
 .menu{
-    height: 100%; 
-    width: 100%;
-    /* background-image: url("../imagenes/nav_Joseph.png"); */
-    /* border: 10px solid pink; */
-    /* display:inline-flex;
-    border-bottom: 1px solid white; */
+    box-sizing: border-box;
+    padding: 24px 16px;
     text-align: center;
+    align-items: center;
+    overflow: hidden;
+}
+
+.contenido{
+    max-width: 80%;
+    margin: 10%;
+    border: 2px solid red;
 }
 
 .logo a img{
@@ -15,7 +19,6 @@
     border-radius: 15px;
     margin-top: 10px;
     margin-left: 10px;
-    /* border: 2px solid red; */
 
 }
 

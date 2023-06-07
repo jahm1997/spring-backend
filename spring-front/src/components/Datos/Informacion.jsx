@@ -7,6 +7,7 @@ const Informacion = () => {
   return (
     <div className="{style.menu}" >
           <h1>Esta vista muestra los comentarios de tareas</h1>
+          <Link to="/inicio" >Ir Atras</Link>
     </div>
   );
 };

@@ -3,7 +3,7 @@
     padding: 24px 16px;
     text-align: center;
     align-items: center;
-    overflow: hidden;
+    overflow: auto;
 
 }
 
@@ -24,6 +24,7 @@
     text-align: center;
 }
 .boton{
-    border: 1px solid rgb(178, 210, 17) ;
+    font-size: larger;
     text-align: center;
+    padding-top: 1%;
 }

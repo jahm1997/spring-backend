@@ -15,6 +15,8 @@ const Bienvenido = () => {
         login: "seleccionar"
     })
 
+    console.log(usuarios)
+
     const select = (e) =>{
         setSeleccion({
           ...seleccion,

@@ -71,6 +71,7 @@ const Contacto = () => {
       </form>
       
       </div>
+      <Link to="/inicio" >Ir Atras</Link>
     </div>
   );
 };
