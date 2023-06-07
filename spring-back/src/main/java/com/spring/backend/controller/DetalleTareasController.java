@@ -27,22 +27,25 @@ public class DetalleTareasController {
 	
 	@GetMapping("")
 	public List<DetalleTarea> obtenerDetalleTareas(){
-		System.out.println("Esto es / de obtenerDetalleTareas");
+		System.out.println("Esto es / del controllador detalles");
 		return detalleTareaService.obtenerDetalles();
 	}
 	
 	@GetMapping("/detalles/{id}")
     public Optional<DetalleTarea> detallesTarea(@PathVariable String id) {
+		System.out.println("Esto es /detalles/{id} del controllador detalles");
         return detalleTareaService.detalles(id);
     }
     
     @PostMapping("/cargue")
     public DetalleTarea agregarDetalles(@RequestBody DetalleTareaDTO detalleTarea) {
+    	System.out.println("Esto es /cargue del controllador detalles");
         return detalleTareaService.agregarDetalles(detalleTarea);
     }
     
     @DeleteMapping("/borrar/{id}")
     public DetalleTarea borrarDetalles(@PathVariable String id) {
+    	System.out.println("Esto es /borrar/{id} del controllador detalles");
         return detalleTareaService.borrarDetalles(id);
     }
 	

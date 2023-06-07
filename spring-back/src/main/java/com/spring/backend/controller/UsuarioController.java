@@ -34,17 +34,20 @@ public class UsuarioController {
 	
 	@GetMapping("/detalles/{id}")
     public Optional<Usuario> detalleUsuario(@PathVariable String id) {
+		System.out.println("Esto es /detalles/{id} del controllador usuario");
 		//System.out.println(id);
         return usuarioService.detalleUsuario(id);
     }
     
     @PostMapping("/cargue")
     public Usuario agregarTAreas(@RequestBody UsuarioDTO usuario) {
+    	System.out.println("Esto es /cargue del controllador usuario");
         return usuarioService.agregarUsuario(usuario);
     }
     
     @DeleteMapping("/borrar/{id}")
     public Usuario borrarUsuario(@PathVariable String id) {
+    	System.out.println("Esto es /borrar/{id} del controllador usuario");
     	return usuarioService.borrarUsuario(id);
     }
 	

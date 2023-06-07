@@ -35,24 +35,28 @@ public class ContactoController {
     
     @GetMapping("/detalles/{id}")
     public Optional<Contacto> detalleContacto(@PathVariable String id) {
+    	System.out.println("Esto es /detalles/{id} del controllador Contactos");
         return contactoService.detalleContacto(id);
     }
     
     @PostMapping("/cargue")
     public Contacto agregarContacto(@RequestBody ContactoDTO contacto) {
     	System.out.println(contacto);
+    	System.out.println("Esto es /cargue del controllador Contactos");
         return contactoService.agregarContacto(contacto);
     }
     
     @DeleteMapping("/borrar/{id}")
     public Contacto borrarContacto(@PathVariable String id) {
     	System.out.println("Este es el id:" + id);
+    	System.out.println("Esto es /borrar/{id} del controllador Contactos");
         return contactoService.borrarContacto(id);
     }
     
     @PutMapping("/actualizar/{id}")
     public Contacto actualizar(@RequestBody ContactoDTO contacto, String id) {
     	System.out.println(contacto);
+    	System.out.println("Esto es /actualizar/{id} del controllador Contactos");
     	return contactoService.editarContacto(contacto, id);
     }
 	

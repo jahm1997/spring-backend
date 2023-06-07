@@ -33,17 +33,20 @@ public class TareaController {
 	
 	@GetMapping("/detalles/{id}")
     public Optional<Tarea> detalles(@PathVariable String id) {
+		System.out.println("Esto es /detalles/{id} del controllador tarea");
         return tareaService.detalleTarea(id);
     }
     
     @PostMapping("/cargue")
     public Tarea agregar(@RequestBody TareaDTO tarea) {
     	System.out.println("Linea 41 antes al recibir una tarea: " + tarea);
+    	System.out.println("Esto es /cargue del controllador tarea");
         return tareaService.agregarTarea(tarea);
     }
     
     @DeleteMapping("/borrar/{id}")
     public Tarea borrar(@PathVariable String id) {
+    	System.out.println("Esto es /borrar/{id} del controllador tarea");
     	return tareaService.borrarTarea(id);
     }
 }
